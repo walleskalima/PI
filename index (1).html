@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade chart js</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #DED2FF;
+        }
+
+        .container {
+        background-color: #FFFFFF;
+        width: 95%;
+        margin: 50px auto;
+        margin-left: 40px;
+        margin-top: 50px;
+        min-height: 610px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+}
+
+        .header {
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 38px;
+            background-color: rgba(80, 0, 133, 0.5);
+            margin: 10px;
+            border-radius: 5px;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+        }
+
+        .chart-container {
+        width: 660px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="container">
+        <div class="header">
+            <span style="margin-top: 7px;">
+                <img width="48" height="48" src="https://img.icons8.com/fluency/48/control-panel.png" alt="control-panel"/>
+            </span>
+            <span style="margin-left: 5px;">Dashboard Sensores</span>
+        </div>
+
+        <section style="display: flex; flex-direction: row; justify-content: space-evenly; align-items: center; padding-top: 5px;">
+        
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+        
+            <div class="chart-container">
+                <canvas id="myChart2"></canvas>
+            </div>
+        </section>
+    </section>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+        const ctx2 = document.getElementById('myChart2');
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+                datasets: [{
+                    label: 'Temperatura Mensal',
+                    data: [25, 21, 20, 23, 20, 16],
+                    borderWidth: 1,
+                    backgroundColor: '#F2EDA2'
+                },
+                {
+                    label: 'Umidade Mensal',
+                    data: [80, 79, 72, 71, 77, 75],
+                    borderWidth: 1,
+                    backgroundColor: '#6bcbf1'
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [{
+                    label: 'Temperatura',
+                    data: [30, 29, 28, 25, 22, 23],
+                    borderWidth: 1,
+                    borderColor: "#d8b648",
+                    backgroundColor: "#F2EDA2"
+                },
+                {
+                    label: 'Umidade',
+                    data: [80, 82, 80, 85, 80, 83],
+                    borderWidth: 1,
+                    borderColor: '#41C0F2',
+                    backgroundColor: '#6bcbf1'
+
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
